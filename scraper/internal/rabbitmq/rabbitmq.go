@@ -60,6 +60,8 @@ func InitRabbitMQClient() *RabbitMQClient {
 }
 
 func PreloadSeedUsername(rmq *RabbitMQClient) {
+	seedUsername := os.Getenv("SPOTIFY_SEED_USERNAME")
+
 	err := rmq.Channel.Publish(
 		"",
 		rmq.ScrapeQ.Name,
@@ -67,7 +69,7 @@ func PreloadSeedUsername(rmq *RabbitMQClient) {
 		false,
 		amqp.Publishing{
 			ContentType: "text/plain",
-			Body:        []byte("cade.49"),
+			Body:        []byte(seedUsername),
 		},
 	)
 	if err != nil {
