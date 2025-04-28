@@ -67,7 +67,6 @@ func scrapeFollowers(userId string, browser *rod.Browser) map[string]bool {
 	followers := make(map[string]bool)
 
 	url := fmt.Sprintf("https://open.spotify.com/user/%s/followers", userId)
-	fmt.Println(url)
 	page := browser.MustPage(url)
 
 	gridContainer, err := page.Timeout(5 * time.Second).Element(`div[data-testid="grid-container"]`)
