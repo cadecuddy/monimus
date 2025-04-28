@@ -1,0 +1,4 @@
+/rabbitmq/
+database/data
+*.sh
+.env
